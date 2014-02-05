@@ -1,0 +1,34 @@
+<?php
+$this->WidgetClient->clear();
+$this->WidgetClient->create("Account Switcher");
+?>
+<div class="inner">
+    <div class="pad">
+            <?php $this->_("ClientSelect.overview"); ?><br /><br />
+            
+            <?php $this->_("ClientSelect.directions"); ?><br /><br />
+            <?php $this->Form->create(); ?>
+            <select id="company_switcher" name="user"><?php
+            foreach($data as $obj){
+            
+            // This if-check exists due to getting company list at user login only
+            // If we did it on page request then we'd be making more queries to the DB than needed
+            // (very small chance of a new company being added between login sessions).
+                if($obj->client_id != $_SESSION['blesta_client_id']){
+            ?>
+            <option value="<?php echo($obj->user_id) ?>,<?php echo($obj->client_id); ?>" />User ID: <?php echo($obj->id_value); ?><?php if(!empty($obj->company)){ ?> (Company: <?php echo($obj->company); ?>)<?php } ?></option>
+            <?php
+                }
+            } ?>
+            </select>
+            <div class="button_row">
+                <div class="btn submit right_btn">
+                    <a class="submit" href="#"><?php $this->_("ClientSelect.switch_button"); ?></a>
+                </div>
+            </div>
+            <?php $this->Form->end(); ?>
+    </div>
+</div>
+<?php
+$this->WidgetClient->end();
+?>

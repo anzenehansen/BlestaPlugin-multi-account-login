@@ -1,0 +1,11 @@
+{
+    "version": "1.0.0",
+    "name": "Multi-Account Login",
+    "description": "Allows clients to login and manage multiple profiles without having to constantly logout/login.",
+    "authors": [
+        {
+            "name": "Anzen Solutions, LLC",
+            "url": "https://www.anzensolutions.com"
+        }
+    ]
+}
